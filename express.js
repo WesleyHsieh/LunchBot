@@ -46,11 +46,15 @@ app.get('/room', function(req, res) {
 
 app.get('/room/:id', function(req, res) {
   // Where we have entered a specific room and want to vote for recipes (or add them)
-  var mac = RecipeLib.Recipe("Mac n Cheese");
-  mac.details = "macaroni and cheese, ya dig?";
-  mac.link = "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg";
+  //var mac = RecipeLib.Recipe("Mac n Cheese");
+  //mac.details = "macaroni and cheese, ya dig?";
+  //mac.link = "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg";
 
-  var mac = RecipeLib.Recipe("Mac n Cheese");
+  var mac = RecipeLib.Recipe("Mac n' Cheese", "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg");
+  var caprese = RecipeLib.Recipe("Caprese Salad", "https://pleasebebrave.files.wordpress.com/2012/06/dsc_0961.jpg");
+  var smoothie = RecipeLib.Recipe("Avocado and Spinach Smoothie", "http://www.upstateramblings.com/wp-content/uploads/2014/06/mango-avocado-smoothie-2.png");
+
+  //var mac = RecipeLib.Recipe("Mac n Cheese");
   mac.details = {"uncooked elbow macaroni": "8 ounces",
                  "shredded Sharp Cheddar cheese": "2 cups",
                  "grated Parmesan cheese": "0.5 cup",
@@ -63,7 +67,8 @@ app.get('/room/:id', function(req, res) {
                  "step2": "In a saucepan, melt butter over medium heat. Stir in flour and add milk and cheeses",
                  "step3": "melt butter and add breadcrumbs. Spread over mac and cheese and cover. Sprinkle paprika",
                  "step4": "Bake at 350 degrees for 30 minutes."};
-  var caprese = RecipeLib.Recipe("Caprese Salad");
+  mac.picture = "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg";
+  //var caprese = RecipeLib.Recipe("Caprese Salad");
   caprese.details = {"vine-ripe tomatoes": "3 cut into .25-inch thick slices",
                      "fresh mozzarella": "1 pound cut into 0.25-inch thick slices",
                      "fresh basil": "20-30 leaves",
@@ -71,12 +76,14 @@ app.get('/room/:id', function(req, res) {
                      "coarse salt and pepper": "for taste",
                      "step1": "Layer alternating slices of tomato and mozzarella adding a basil leaf between each, on a large, shallow platter.",
                      "step2": "Drizzle the salad with extra virgin olive oil and season with salt and pepper, to taste"};
-  var smoothie = RecipeLib.Recipe("Avocado and Spinach Smoothie");
+caprese.picture = "https://pleasebebrave.files.wordpress.com/2012/06/dsc_0961.jpg";  
+  //var smoothie = RecipeLib.Recipe("Avocado and Spinach Smoothie");
   smoothie.details = {"apple juice": "1.5 cups",
                       "stemmed and chopped spinach": "2 cups",
                       "unpeeled, cored, chopped apple": "1",
                       "chopped avocado": "0.5",
                       "step1": "Combine the apple juice, spinach, apple, and avoacdo in a blender and puree until smooth, about 1 minute, adding water to reach desired consistency"};
+  smoothie.picture = "http://www.upstateramblings.com/wp-content/uploads/2014/06/mango-avocado-smoothie-2.png";
   var locals = {
     room_id: req.params.id,
     recipes: [ mac, caprese , smoothie ]
@@ -86,9 +93,13 @@ app.get('/room/:id', function(req, res) {
 });
 
 app.get('/room/:id/mealtime', function(req, res) {
-  var mac = RecipeLib.Recipe("Mac n' Cheese");
+  var mac = RecipeLib.Recipe("Mac n' Cheese", "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg");
+  var caprese = RecipeLib.Recipe("Caprese Salad", "https://pleasebebrave.files.wordpress.com/2012/06/dsc_0961.jpg");
+  var smoothie = RecipeLib.Recipe("Avocado and Spinach Smoothie", "http://www.upstateramblings.com/wp-content/uploads/2014/06/mango-avocado-smoothie-2.png");
   var locals = {
-    recipe: mac
+    recipe: mac,
+    recipe: caprese,
+    recipe: smoothie
   };
 
   mac.details = {"uncooked elbow macaroni": "8 ounces",
@@ -103,7 +114,24 @@ app.get('/room/:id/mealtime', function(req, res) {
                  "step2": "In a saucepan, melt butter over medium heat. Stir in flour and add milk and cheeses",
                  "step3": "melt butter and add breadcrumbs. Spread over mac and cheese and cover. Sprinkle paprika",
                  "step4": "Bake at 350 degrees for 30 minutes."};
+  mac.picture = "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg";
 
+  caprese.details = {"vine-ripe tomatoes": "3 cut into .25-inch thick slices",
+                     "fresh mozzarella": "1 pound cut into 0.25-inch thick slices",
+                     "fresh basil": "20-30 leaves",
+                     "extra-virgin olive oil": "for drizzling",
+                     "coarse salt and pepper": "for taste",
+                     "step1": "Layer alternating slices of tomato and mozzarella adding a basil leaf between each, on a large, shallow platter.",
+                     "step2": "Drizzle the salad with extra virgin olive oil and season with salt and pepper, to taste"};
+
+  smoothie.picture = "http://www.upstateramblings.com/wp-content/uploads/2014/06/mango-avocado-smoothie-2.png";
+
+  smoothie.details = {"apple juice": "1.5 cups",
+                      "stemmed and chopped spinach": "2 cups",
+                      "unpeeled, cored, chopped apple": "1",
+                      "chopped avocado": "0.5",
+                      "step1": "Combine the apple juice, spinach, apple, and avoacdo in a blender and puree until smooth, about 1 minute, adding water to reach desired consistency"};
+  caprese.picture = "https://pleasebebrave.files.wordpress.com/2012/06/dsc_0961.jpg";
   var html = pug.renderFile(path.join(__dirname, 'templates', 'recipe.pug'), locals);
   res.send(html);
 });

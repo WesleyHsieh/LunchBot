@@ -21,7 +21,7 @@ module.exports = {
 		}
 	},
 
-	Recipe: function(named) {
-		return {name: named, cost: 0, details: "", userVotes: [], link: "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg"};
+	Recipe: function(named, pic) {
+		return {name: named, cost: 0, details: "", userVotes: [], picture: pic, link: "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg"};
 	}
 }

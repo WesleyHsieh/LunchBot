@@ -31,7 +31,7 @@ html(lang="en")
     h3 Vote #{room_id}
     each recipe in recipes
       div.demo-card-wide.mdl-card.mdl-shadow--2dp
-        - var string = "background: url( " + recipe.link + ") center / cover"
+        - var string = "background: url( " + recipe.picture + ") center / cover"
         div.mdl-card__title(style=string)
           h2.mdl-card__title-text #{recipe.name}
         div.mdl-card__supporting-text Lorem Ipsum dolor sit amet, consectetur adipiscing elit.
