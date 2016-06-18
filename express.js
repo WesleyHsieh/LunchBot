@@ -5,6 +5,8 @@ var https   = require('https');
 var path    = require('path');
 var pug     = require('pug');
 
+var RecipeLib = require('./logic.js');
+
 var key = fs.readFileSync('./ssl.key');
 var cert = fs.readFileSync('./ssl.cert')
 var https_options = {
@@ -41,7 +43,13 @@ app.get('/room', function(req, res) {
 });
 
 app.get('/room/:id', function(req, res) {
-  var locals = { room_id: req.params.id };
+  // Where we have entered a specific room and want to vote for recipes (or add them)
+  var mac = RecipeLib.Recipe("Mac n Cheese");
+  mac.details = "macaroni and cheese, ya dig?";
+  var locals = {
+    room_id: req.params.id,
+    recipes: [JSON.stringify(mac)]
+  };
   var html = pug.renderFile(path.join(__dirname, 'templates', 'vote.pug'), locals);
   res.send(html);
 });
