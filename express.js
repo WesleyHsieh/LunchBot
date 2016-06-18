@@ -23,6 +23,12 @@ app.get('/hey', function(req, res) {
     // res.sendFile('~/testing-out/index.html');
     res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+app.get('/recipeList', function(req, res) {
+    // res.sendFile('~/testing-out/index.html');
+    res.sendFile(path.join(__dirname, 'recipeList.html'));
+});
+
 app.post('/ho', function(req, res) {
     res.send('HO!');
 });
