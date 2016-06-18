@@ -1,4 +1,6 @@
-var recipe = {name: "", cost: 0, details: "", userVotes: [], link: ""};
+export Recipe = function() {
+	var recipe = {name: "", cost: 0, details: "", userVotes: [], link: ""};
+}
 var updateVotes = function(person) {
 	var flag = true;
 	for (var i = 0; i < userVotes.length; i++) {
@@ -8,7 +10,9 @@ var updateVotes = function(person) {
 	}
 	if (flag) {
 	recipe.userVotes = recipe.userVotes + [person];
-}
+	}
 }
 var recipeList = [];
 var person = {userid: "", groups: [], recipes: []};
+
+

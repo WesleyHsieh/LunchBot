@@ -11,6 +11,7 @@ var https_options = {
     key: key,
     cert: cert
 };
+
 var PORT = 443;
 app = express();
 
@@ -18,12 +19,12 @@ server = https.createServer(https_options, app).listen(PORT);
 console.log('HTTPS Server listening on Port %s', PORT);
 
 // routes
-app.get('/hey', function(req, res) {
+app.get('/login', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/login', function(req, res) {
-    res.send('HO!');
+app.get('/recipeList', function(req, res) {
+    res.sendFile(path.join(__dirname, 'recipeList.html'));
 });
 
 app.get('/room', function(req, res) {
@@ -45,10 +46,6 @@ app.get('/room/:id', function(req, res) {
   res.send(html);
 });
 
-app.get('/room/:id/mealtime', function(req, res) {
+app.get('/room/:id/mealtime', function(req, res) { });
 
-});
-
-app.get('/room/:id/split', function(req, res) {
-
-});
+app.get('/room/:id/split', function(req, res) { });
