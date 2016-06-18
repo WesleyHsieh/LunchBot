@@ -25,8 +25,8 @@ app.get('/login', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/recipeList', function(req, res) {
-    res.sendFile(path.join(__dirname, 'recipeList.html'));
+app.get('/room', function(req, res) {
+    res.sendFile(path.join(__dirname, 'room.html'));
 });
 
 app.get('/room', function(req, res) {
