@@ -14,7 +14,8 @@ class Group:
         self.people = {host.name: host} 
         self.recipes = {} 
         self.phase = "voting" 
-        
+        self.group_id = None
+
     def add_person(self, person_id):
         """
         Adds a new person.
@@ -56,14 +57,14 @@ class Group:
         assert recipe_name in self.recipes
         return self.recipes[recipe_name]
 
-    def process_vote(self, member, recipe, vote):
+    def process_vote(self, member, recipe):
         """
         Processes incoming vote.
         """
         assert member in self.members and recipe in self.recipes
         curr_member = self.members[member]
         curr_recipe = self.recipes[recipe]
-        curr_recipe.process_vote(member, vote)
+        curr_recipe.process_vote(member)
 
     def select_recipe(self):
         """
@@ -73,7 +74,11 @@ class Group:
         """
         selected_recipe = max(self.recipes, key=lambda x: x.number_votes())
         self.selected_recipe = selected_recipe
-        self.phase = "selected"
+        self.phase = "waiting_confirmations"
+        self.notify_people()
+
+    def process_confirmations(self):
+        self.phase = "confirmed"
         self.notify_people()
 
     def request_payments(self, message, recipe, amount):
@@ -96,3 +101,7 @@ class Group:
         for person in selected_people:
             person.notify(message)
 
+    def notify_all_members(self, message):
+        for person in self.people:
+            person.notify(message)
+            
