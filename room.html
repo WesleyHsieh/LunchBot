@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Choose a Room</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<script>
+function query() {
+window.location.href = "https://localhost/room/"+document.querySelector("#target").value;
+}
+</script>
+  Choose Room:<br>
+  <input type="text" name="ChooseRoom" id="target" align="center"><br>
+  <button onclick="query()">Go</button>
+</body>
+</html>
