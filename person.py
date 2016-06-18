@@ -2,10 +2,10 @@ class Person:
 	# userID will be passed in somehow
 	def __init__(self, userID):
 		self.userID = userID
-		groups = []
+		self.groups = []
 
 	def addGroups(self, group):
-		return self.addGroups.append(group)
+		return self.groups.append(group)
 
 	def getGroups(self):
 		return self.groups
