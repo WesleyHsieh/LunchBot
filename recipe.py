@@ -6,8 +6,9 @@ class Recipe:
 		self.userVotes = []
 		self.link = link
 
-  	def process_vote(self, username):
-  		self.userVotes.append(username)
+  	def process_vote(self, person):
+  		if person not in self.userVotes:
+  			self.userVotes.append(person)
 
   	def number_Votes(self):
   		return len(self.userVotes)

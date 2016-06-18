@@ -13,6 +13,9 @@ class Person:
 	def getUserID(self):
 		return self.userID
 
+	def notify(self, message):
+		#somehow it notifies the person with the message
+
 
 
 
