@@ -55,6 +55,27 @@ app.get('/room/:id', function(req, res) {
   res.send(html);
 });
 
-app.get('/room/:id/mealtime', function(req, res) { });
+app.get('/room/:id/mealtime', function(req, res) {
+  var mac = RecipeLib.Recipe("Mac n' Cheese");
+  var locals = {
+    recipe: mac
+  };
+
+  mac.details = {"uncooked elbow macaroni": "8 ounces",
+                 "shredded Sharp Cheddar cheese": "2 cups",
+                 "grated Parmesan cheese": "0.5 cup",
+                 "milk": "3 cups",
+                 "butter": "0.25 cups",
+                 "all-purpose flour": "2.5 tablespoons",
+                 "bread crumbs": "2 tablespoons",
+                 "paprika": "1 pinch",
+                 "step1": "Cook macaroni according to package directions, drain",
+                 "step2": "In a saucepan, melt butter over medium heat. Stir in flour and add milk and cheeses",
+                 "step3": "melt butter and add breadcrumbs. Spread over mac and cheese and cover. Sprinkle paprika",
+                 "step4": "Bake at 350 degrees for 30 minutes."};
+
+  var html = pug.renderFile(path.join(__dirname, 'templates', 'recipe.pug'), locals);
+  res.send(html);
+});
 
 app.get('/room/:id/split', function(req, res) { });
