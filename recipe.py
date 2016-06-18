@@ -1,8 +1,8 @@
 class recipe:
-	def __init__(self, name, details, cost, userVotes):
+	def __init__(self, name, details, cost):
       self.name = name
       self.cost = cost
-      userVotes = []
+      self.userVotes = []
 
   	def userVoted(self, username):
   		self.userVotes.append(username)
