@@ -24,6 +24,10 @@ html(lang="en")
       |     color: #fff;
       | }
   body
+    script(type='text/javascript').
+      function clickevent () {
+        document.location.href = "https://localhost/room/"+#{room_id}+"/split";
+      }
     h3 Vote #{room_id}
     each recipe in recipes
       div.demo-card-wide.mdl-card.mdl-shadow--2dp
@@ -39,3 +43,4 @@ html(lang="en")
         div.mdl-card__menu
           button.mdl-button.mdl-button--icon.mdl-js-button.mdl-js-ripple-effect
             i.material-icons
+    button(onclick='clickevent();') Next
