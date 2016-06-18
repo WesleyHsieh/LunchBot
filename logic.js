@@ -1,4 +1,4 @@
-export Recipe = function() {
+modules.export Recipe = function() {
 	var recipe = {name: "", cost: 0, details: "", userVotes: [], link: ""};
 }
 var updateVotes = function(person) {

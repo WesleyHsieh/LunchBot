@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>var a = function() {
+    LogicMod = require('./logic');
+    var mac = LogicMod.Recipe.recipe("Mac and cheese", 100, "", [], "");
+    JSON.stringify(mac, null, 2);
+}
+</script>
+<title>List of Recipes</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<button type="button" onclick="a()"></button>
+</body>
+</html>
