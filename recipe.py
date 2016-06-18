@@ -6,17 +6,20 @@ class Recipe:
 		self.userVotes = []
 		self.link = link
 
-  	def userVoted(self, username):
+  	def process_vote(self, username):
   		self.userVotes.append(username)
 
-  	def numberVotes(self):
+  	def number_Votes(self):
   		return len(self.userVotes)
 
   	def getName(self):
   		return self.name
 
   	def getDetails(self):
-  		return self.name
+  		return self.details
 
   	def setDetails(self, details):
   		self.details = details
+
+  	def get_users_voted(self):
+  		return self.userVotes
