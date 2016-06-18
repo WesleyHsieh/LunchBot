@@ -8,4 +8,7 @@ class recipe:
   		self.userVotes.append(username)
 
   	def numberVotes(self):
-  		return len(userVotes)
+  		return len(self.userVotes)
+
+  	def getName(self):
+  		return self.name
