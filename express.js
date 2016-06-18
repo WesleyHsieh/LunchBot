@@ -6,6 +6,8 @@ var path    = require('path');
 var pug     = require('pug');
 
 var RecipeLib = require('./logic.js');
+var GroupLib = require('./group.js');
+var logicLib = require('./logic.js');
 
 var key = fs.readFileSync('./ssl.key');
 var cert = fs.readFileSync('./ssl.cert')
@@ -106,4 +108,19 @@ app.get('/room/:id/mealtime', function(req, res) {
   res.send(html);
 });
 
-app.get('/room/:id/split', function(req, res) { });
+app.get('/room/:id/split', function(req, res) { 
+  var mac = RecipeLib.Recipe("Mac n Cheese");
+  mac.details = "macaroni and cheese, ya dig?";
+  mac.price = 9;
+  var hiBob = new logicLib.Person(1, "Bob");
+  var group = new GroupLib.Group(hiBob.userid, hiBob);
+  group.add_person(2, "Alice");
+  group.add_person(3, "Eve");
+  group.selected_recipe = mac;
+  var locals = {
+    room_id: req.params.id,
+    costs: group.splitCosts()
+  };
+  var html = pug.renderFile(path.join(__dirname, 'templates', 'split.pug'), locals);
+  res.send(html);
+});

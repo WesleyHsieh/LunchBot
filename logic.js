@@ -1,6 +1,10 @@
 module.exports = {
-	person: {userid: "", groups: [], recipes: []},
-
+	Person: function(person_id, name) {
+                  this.userid=person_id; 
+                  this.groups=[];
+                  this.recipes=[]; 
+                  this.name=name},
+	// We could potentially store in groups whether they have paid as well?
 	recipeList: [],
 
 	updateVotes: function(person) {
