@@ -46,9 +46,10 @@ app.get('/room/:id', function(req, res) {
   // Where we have entered a specific room and want to vote for recipes (or add them)
   var mac = RecipeLib.Recipe("Mac n Cheese");
   mac.details = "macaroni and cheese, ya dig?";
+  mac.link = "http://cdn1.tmbi.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg";
   var locals = {
     room_id: req.params.id,
-    recipes: [JSON.stringify(mac)]
+    recipes: [ mac, mac , mac ]
   };
   var html = pug.renderFile(path.join(__dirname, 'templates', 'vote.pug'), locals);
   res.send(html);
