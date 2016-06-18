@@ -1,5 +1,5 @@
-import Person
-import Recipe
+import person
+import recipe
 
 class Group:
     """

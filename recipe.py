@@ -1,4 +1,4 @@
-class recipe:
+class Recipe:
 	def __init__(self, name, cost, details):
 		self.name = name
 		self.cost = cost
